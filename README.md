@@ -1,18 +1,45 @@
-# React + Vite
+# 📝 Список дел (Todo List) с JSON Server и React Router
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Приложение для управления задачами с возможностью добавления, просмотра, редактирования и удаления.  
+Реализована маршрутизация (главная страница + страница задачи), поиск и сортировка по алфавиту.
 
-Currently, two official plugins are available:
+🧩 Функциональность
+Главная страница (/)
+Добавление задачи – форма ввода вверху страницы.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Поиск – фильтрация задач по введённой фразе (регистронезависимо).
 
-## React Compiler
+Сортировка по алфавиту – кнопка включает/отключает сортировку.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+Список задач – каждая задача отображается в виде карточки:
 
-Note: This will impact Vite dev & build performances.
+Одна строка текста, длинный текст обрезается с многоточием (...).
 
-## Expanding the ESLint configuration
+При клике на карточку происходит переход на страницу задачи.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Показывается статус (Выполнено / В процессе).
+
+Статистика – количество всех, выполненных и оставшихся задач.
+
+Страница задачи (/task/:id)
+Полный текст задачи (без обрезания).
+
+Чекбокс для отметки выполнения.
+
+Редактирование текста – кнопка «Редактировать», после сохранения текст обновляется.
+
+Удаление задачи – кнопка «Удалить» с подтверждением.
+
+Кнопка «Назад» (стрелка) – возвращает на предыдущую страницу (не важно, откуда пришли).
+
+Страница 404
+При переходе по любому несуществующему адресу (например, /abc) отображается страница с ошибкой 404 и указанием адреса /404.
+
+🔧 API эндпоинты (JSON Server)
+Метод	URL	Описание
+GET	/todos	получить все задачи
+GET	/todos/:id	получить одну задачу
+POST	/todos	создать новую задачу
+PATCH	/todos/:id	обновить задачу (статус/текст)
+DELETE	/todos/:id	удалить задачу
+Базовый URL: http://localhost:3001
